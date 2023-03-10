@@ -30,8 +30,13 @@ WebDriverWait(driver, 5).until(
     )
 )
 
-logout_button = driver.find_element(By.XPATH, '//*[@id="content"]/div/a/i')
-logout_button.click()
+# Example - How to avoid an element that not exists (see commented line)
+try:
+    # logout_button = driver.find_element(By.XPATH, 'asdasda')
+    logout_button = driver.find_element(By.XPATH, '//*[@id="content"]/div/a/i')
+    logout_button.click()
+except:
+    print("Button not exist")
 
 # REQUIRED ARGUMENT TO CLOSE CHROME DRIVER
 driver.close()
